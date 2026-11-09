@@ -1,0 +1,35 @@
+{
+  "status": "PASS_STATIC_SCAN_ONLY",
+  "lean_executed": false,
+  "semantic_axiom_audit_performed": false,
+  "files": [
+    {
+      "file": "Zagreb004.lean",
+      "forbidden_tokens": []
+    },
+    {
+      "file": "Audit.lean",
+      "forbidden_tokens": []
+    },
+    {
+      "file": "Zagreb004/Arithmetic.lean",
+      "forbidden_tokens": []
+    },
+    {
+      "file": "Zagreb004/Definitions.lean",
+      "forbidden_tokens": []
+    },
+    {
+      "file": "Zagreb004/Profiles.lean",
+      "forbidden_tokens": []
+    },
+    {
+      "file": "Zagreb004/Targets.lean",
+      "forbidden_tokens": []
+    },
+    {
+      "file": "Zagreb004/Witness.lean",
+      "forbidden_tokens": []
+    }
+  ]
+}

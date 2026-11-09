@@ -1,0 +1,37 @@
+{
+  "date": "2026-11-09",
+  "phase": "1",
+  "status": "READY_FOR_PHASE_2",
+  "full_research_claim_verified": false,
+  "lean_version": "4.19.0",
+  "mathlib_commit": "c44e0c8ee63ca166450922a373c7409c5d26b00b",
+  "dependency_pins_verified": true,
+  "cached_files_downloaded": 6641,
+  "lake_build_exit_code": 0,
+  "audit_exit_code": 0,
+  "public_theorems_audited": 25,
+  "private_reachability_lemmas_compiled": 46,
+  "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+  ],
+  "sorry_or_custom_axioms": false,
+  "theorem_statements_unchanged": true,
+  "witness_graph_and_edge_list_unchanged": true,
+  "original_research_artifact_hashes_unchanged": true,
+  "machine_checked": [
+    "Concrete connected 46-vertex counterexample, degrees in [2,5] attaining both extrema, 67 edges, M1=436, M2=635, gap=2, and specified edge-type counts.",
+    "Arithmetic barriers, reduced cases, family identities and positive-gap integer parameters.",
+    "Profile gap identity and conditional canonical-profile classification."
+  ],
+  "outstanding": [
+    "General graph-to-profile edge partition, incidence and weighted counting identities.",
+    "Derive profile cut conditions from connectedness and positive relevant edge counts.",
+    "Relate graph gap/order to profile gap/order and prove MinimalityTarget and ExtremalProfileTarget.",
+    "Realize the infinite graph family with simplicity, connectivity, degree and index proofs; prove AllOrdersTarget.",
+    "Combine existing witness existence and missing target proofs into FullTarget and audit axioms."
+  ],
+  "report": "PHASE1_REPORT.md",
+  "logs": "local-logs/phase1-command-results.json"
+}

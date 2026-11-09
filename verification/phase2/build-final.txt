@@ -1,0 +1,5 @@
+✔ [6660/6664] Built Zagreb004.Family
+✔ [6661/6664] Built Zagreb004.Cores
+✔ [6662/6664] Built Zagreb004.Full
+✔ [6663/6664] Built Zagreb004
+Build completed successfully.

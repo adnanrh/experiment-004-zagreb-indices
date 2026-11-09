@@ -1,0 +1,36 @@
+{
+  "date": "2026-11-09",
+  "phase": 2,
+  "status": "COMPLETE",
+  "full_target_verified": true,
+  "theorem": "Zagreb004.fullTarget",
+  "type": "Zagreb004.FullTarget",
+  "extra_hypotheses": [],
+  "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "lean": "4.19.0",
+  "mathlib_commit": "c44e0c8ee63ca166450922a373c7409c5d26b00b",
+  "lake_build_exit_code": 0,
+  "audit_exit_code": 0,
+  "public_theorems_audited": 90,
+  "sorry_or_custom_axioms": false,
+  "original_definitions_and_targets_unchanged": true,
+  "original_research_artifacts_unchanged": true,
+  "completed": [
+    "General weighted incidence and ten-type edge partition",
+    "Actual graph size, order, Zagreb indices and quadratic gap identity",
+    "Four degree-incidence equations and both connectedness cuts",
+    "MinimalityTarget",
+    "ExtremalProfileTarget",
+    "Actual simple connected counterexamples at every order n >= 46",
+    "Exact FullTarget"
+  ],
+  "outstanding_full_target_obligations": [],
+  "family_construction": "Fixed 5-hub or 7-hub subdivided core, bridge, and prism with its zero rung subdivided; transported by a finite equivalence to Fin n.",
+  "report": "PHASE2_REPORT.md",
+  "build_log": "local-logs/phase2/build-final.txt",
+  "audit_log": "local-logs/phase2/audit-final.txt"
+}

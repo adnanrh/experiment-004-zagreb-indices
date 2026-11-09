@@ -1,0 +1,17 @@
+.lake/
+local-logs/
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.tmp
+*.swp
+*~
+.DS_Store
+Thumbs.db
+*:Zone.Identifier

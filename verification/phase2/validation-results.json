@@ -1,0 +1,14 @@
+{
+  "build_exit": 0,
+  "audit_exit": 0,
+  "audited_theorem_count": 90,
+  "allowed_axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+  ],
+  "static_scan": "PASS",
+  "dependency_pins": "PASS",
+  "artifact_hashes": "PASS",
+  "original_targets": "UNCHANGED"
+}

@@ -1,0 +1,109 @@
+{
+  "notice": "These are actual attempts, not successful compilation logs.",
+  "records": [
+    {
+      "command": [
+        "lean",
+        "--version"
+      ],
+      "launched": false,
+      "exit_code": 127,
+      "output": "[Errno 2] No such file or directory: 'lean'"
+    },
+    {
+      "command": [
+        "lake",
+        "--version"
+      ],
+      "launched": false,
+      "exit_code": 127,
+      "output": "[Errno 2] No such file or directory: 'lake'"
+    },
+    {
+      "command": [
+        "lake",
+        "build"
+      ],
+      "launched": false,
+      "exit_code": 127,
+      "output": "[Errno 2] No such file or directory: 'lake'"
+    },
+    {
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "Zagreb004/Definitions.lean"
+      ],
+      "launched": false,
+      "exit_code": 127,
+      "output": "[Errno 2] No such file or directory: 'lake'"
+    },
+    {
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "Zagreb004/Arithmetic.lean"
+      ],
+      "launched": false,
+      "exit_code": 127,
+      "output": "[Errno 2] No such file or directory: 'lake'"
+    },
+    {
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "Zagreb004/Profiles.lean"
+      ],
+      "launched": false,
+      "exit_code": 127,
+      "output": "[Errno 2] No such file or directory: 'lake'"
+    },
+    {
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "Zagreb004/Witness.lean"
+      ],
+      "launched": false,
+      "exit_code": 127,
+      "output": "[Errno 2] No such file or directory: 'lake'"
+    },
+    {
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "Zagreb004/Targets.lean"
+      ],
+      "launched": false,
+      "exit_code": 127,
+      "output": "[Errno 2] No such file or directory: 'lake'"
+    },
+    {
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "Zagreb004.lean"
+      ],
+      "launched": false,
+      "exit_code": 127,
+      "output": "[Errno 2] No such file or directory: 'lake'"
+    },
+    {
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "Audit.lean"
+      ],
+      "launched": false,
+      "exit_code": 127,
+      "output": "[Errno 2] No such file or directory: 'lake'"
+    }
+  ]
+}

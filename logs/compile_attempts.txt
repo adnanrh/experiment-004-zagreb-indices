@@ -1,0 +1,39 @@
+$ lean --version
+[Errno 2] No such file or directory: 'lean'
+launched=False; exit_status=127
+
+$ lake --version
+[Errno 2] No such file or directory: 'lake'
+launched=False; exit_status=127
+
+$ lake build
+[Errno 2] No such file or directory: 'lake'
+launched=False; exit_status=127
+
+$ lake env lean Zagreb004/Definitions.lean
+[Errno 2] No such file or directory: 'lake'
+launched=False; exit_status=127
+
+$ lake env lean Zagreb004/Arithmetic.lean
+[Errno 2] No such file or directory: 'lake'
+launched=False; exit_status=127
+
+$ lake env lean Zagreb004/Profiles.lean
+[Errno 2] No such file or directory: 'lake'
+launched=False; exit_status=127
+
+$ lake env lean Zagreb004/Witness.lean
+[Errno 2] No such file or directory: 'lake'
+launched=False; exit_status=127
+
+$ lake env lean Zagreb004/Targets.lean
+[Errno 2] No such file or directory: 'lake'
+launched=False; exit_status=127
+
+$ lake env lean Zagreb004.lean
+[Errno 2] No such file or directory: 'lake'
+launched=False; exit_status=127
+
+$ lake env lean Audit.lean
+[Errno 2] No such file or directory: 'lake'
+launched=False; exit_status=127

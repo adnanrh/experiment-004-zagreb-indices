@@ -1,0 +1,10 @@
+{
+  "Zagreb004/Targets.lean": true,
+  "Zagreb004/Definitions.lean": true,
+  "Zagreb004/Arithmetic.lean": true,
+  "Zagreb004/Profiles.lean": true,
+  "Zagreb004/Witness.lean": true,
+  "lakefile.toml": true,
+  "lake-manifest.json": true,
+  "lean-toolchain": true
+}

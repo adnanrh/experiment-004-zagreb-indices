@@ -1,0 +1,30 @@
+'Zagreb004.degree_eq_mathlib' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zagreb004.Arithmetic.coefficient_barrier' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zagreb004.Arithmetic.patternII_impossible' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zagreb004.Arithmetic.patternI_unique' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zagreb004.Arithmetic.family_gap_identity' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zagreb004.Arithmetic.even_order_identity' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zagreb004.Arithmetic.odd_order_identity' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zagreb004.Arithmetic.even_gap_identity' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zagreb004.Arithmetic.odd_gap_identity' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zagreb004.Arithmetic.even_gap_positive' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zagreb004.Arithmetic.odd_gap_positive' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zagreb004.Arithmetic.all_orders_parameters' depends on axioms: [propext, Quot.sound]
+'Zagreb004.Profiles.gap_identity' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zagreb004.Profiles.profile_threshold' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zagreb004.Witness.connected' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zagreb004.Witness.degree_table' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zagreb004.Witness.exact_extrema' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zagreb004.Witness.exact_size' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zagreb004.Witness.exact_first' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zagreb004.Witness.exact_second' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zagreb004.Witness.exact_gap' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zagreb004.Witness.exact_edge_types' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zagreb004.Witness.strict_violation' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zagreb004.Witness.is_counterexample' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zagreb004.Witness.existence' depends on axioms: [propext, Classical.choice, Quot.sound]
+Zagreb004.Exists46Target : Prop
+Zagreb004.MinimalityTarget : Prop
+Zagreb004.AllOrdersTarget : Prop
+Zagreb004.ExtremalProfileTarget : Prop
+Zagreb004.FullTarget : Prop

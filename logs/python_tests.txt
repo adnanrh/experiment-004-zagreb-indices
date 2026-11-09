@@ -1,0 +1,23 @@
+test_boolean_endpoint (__main__.VerifierTests.test_boolean_endpoint) ... ok
+test_boolean_order (__main__.VerifierTests.test_boolean_order) ... ok
+test_canonical (__main__.VerifierTests.test_canonical) ... ok
+test_duplicate (__main__.VerifierTests.test_duplicate) ... ok
+test_every_order_46_to_1000_and_two_large_orders (__main__.VerifierTests.test_every_order_46_to_1000_and_two_large_orders) ... ok
+test_exhaustive_relaxation (__main__.VerifierTests.test_exhaustive_relaxation) ... ok
+test_false_metadata (__main__.VerifierTests.test_false_metadata) ... ok
+test_general_family_parameters (__main__.VerifierTests.test_general_family_parameters) ... ok
+test_invalid_parameters (__main__.VerifierTests.test_invalid_parameters) ... ok
+test_malformed_edge (__main__.VerifierTests.test_malformed_edge) ... ok
+test_missing_bridge (__main__.VerifierTests.test_missing_bridge) ... ok
+test_negative_endpoint (__main__.VerifierTests.test_negative_endpoint) ... ok
+test_non_integer (__main__.VerifierTests.test_non_integer) ... ok
+test_not_a_counterexample (__main__.VerifierTests.test_not_a_counterexample) ... ok
+test_out_of_range (__main__.VerifierTests.test_out_of_range) ... ok
+test_quadratic_identity (__main__.VerifierTests.test_quadratic_identity) ... ok
+test_reversed_duplicate (__main__.VerifierTests.test_reversed_duplicate) ... ok
+test_self_loop (__main__.VerifierTests.test_self_loop) ... ok
+
+----------------------------------------------------------------------
+Ran 18 tests in 1.845s
+
+OK

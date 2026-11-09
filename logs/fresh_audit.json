@@ -1,0 +1,135 @@
+{
+  "status": "PASS_PYTHON_NOT_LEAN",
+  "method": "integer adjacency matrix and bitset Warshall closure",
+  "certificate_count": 7,
+  "certificates": [
+    {
+      "id": "canonical_46_K7_minus_four_edges",
+      "n": 46,
+      "m": 67,
+      "M1": 436,
+      "M2": 635,
+      "gap": 2,
+      "connected": true,
+      "minimum_degree": 2,
+      "maximum_degree": 5,
+      "edge_types": {
+        "2,3": 1,
+        "2,5": 35,
+        "3,3": 31
+      }
+    },
+    {
+      "id": "family_46",
+      "n": 46,
+      "m": 67,
+      "M1": 436,
+      "M2": 635,
+      "gap": 2,
+      "connected": true,
+      "minimum_degree": 2,
+      "maximum_degree": 5,
+      "edge_types": {
+        "2,3": 1,
+        "2,5": 35,
+        "3,3": 31
+      }
+    },
+    {
+      "id": "family_47",
+      "n": 47,
+      "m": 69,
+      "M1": 438,
+      "M2": 643,
+      "gap": 1,
+      "connected": true,
+      "minimum_degree": 2,
+      "maximum_degree": 5,
+      "edge_types": {
+        "2,3": 1,
+        "2,5": 25,
+        "3,3": 43
+      }
+    },
+    {
+      "id": "family_48",
+      "n": 48,
+      "m": 70,
+      "M1": 454,
+      "M2": 662,
+      "gap": 4,
+      "connected": true,
+      "minimum_degree": 2,
+      "maximum_degree": 5,
+      "edge_types": {
+        "2,3": 1,
+        "2,5": 35,
+        "3,3": 34
+      }
+    },
+    {
+      "id": "family_49",
+      "n": 49,
+      "m": 72,
+      "M1": 456,
+      "M2": 670,
+      "gap": 2,
+      "connected": true,
+      "minimum_degree": 2,
+      "maximum_degree": 5,
+      "edge_types": {
+        "2,3": 1,
+        "2,5": 25,
+        "3,3": 46
+      }
+    },
+    {
+      "id": "family_100",
+      "n": 100,
+      "m": 148,
+      "M1": 922,
+      "M2": 1364,
+      "gap": 56,
+      "connected": true,
+      "minimum_degree": 2,
+      "maximum_degree": 5,
+      "edge_types": {
+        "2,3": 1,
+        "2,5": 35,
+        "3,3": 112
+      }
+    },
+    {
+      "id": "family_101",
+      "n": 101,
+      "m": 150,
+      "M1": 924,
+      "M2": 1372,
+      "gap": 28,
+      "connected": true,
+      "minimum_degree": 2,
+      "maximum_degree": 5,
+      "edge_types": {
+        "2,3": 1,
+        "2,5": 25,
+        "3,3": 124
+      }
+    }
+  ],
+  "coefficient_pairs": 45,
+  "negative_coefficients": [
+    [
+      [
+        2,
+        5
+      ],
+      [
+        3,
+        3
+      ],
+      "-1/30"
+    ]
+  ],
+  "positive_coefficient_count": 44,
+  "symbolic_identity": "PASS (SymPy; not a Lean proof)"
+}

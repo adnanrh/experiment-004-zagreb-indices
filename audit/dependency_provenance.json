@@ -1,0 +1,9 @@
+{
+  "status": "MANUALLY_ASSEMBLED_NOT_LAKE_VALIDATED",
+  "toolchain": "leanprover/lean4:v4.19.0",
+  "mathlib_commit": "c44e0c8ee63ca166450922a373c7409c5d26b00b",
+  "source": "https://github.com/banr1/tailored-LeanCat/blob/main/lake-manifest.json",
+  "source_description": "Public primary project manifest containing the v4.19.0 Mathlib revision and eight transitive dependency pins. This is not the canonical Mathlib repository; its pins must be checked against the fetched Mathlib revision before use.",
+  "changes": "Root name changed to zagreb004; mathlib inputRev changed from the tag v4.19.0 to its observed commit hash, matching lakefile.toml.",
+  "limitations": "No Lean or Lake ran. Dependencies were not downloaded, resolved, or validated in this session. No compiled libraries are included."
+}

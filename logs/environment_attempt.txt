@@ -1,0 +1,13 @@
+$ lean --version
+bash: line 2: lean: command not found
+exit_status=127
+
+$ lake --version
+bash: line 2: lake: command not found
+exit_status=127
+
+$ curl -I --max-time 15 https://github.com
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0curl: (6) Could not resolve host: github.com
+exit_status=6

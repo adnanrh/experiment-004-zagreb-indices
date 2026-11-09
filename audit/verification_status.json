@@ -1,0 +1,38 @@
+{
+  "overall_status": "NOT_FORMALLY_VERIFIED",
+  "lean_executed": false,
+  "lake_executed": false,
+  "lean_verified_theorem_count": 0,
+  "candidate_source_status": "UNCOMPILED; compilation correctness is unknown",
+  "full_graph_minimality_implemented": false,
+  "full_graph_infinite_family_implemented": false,
+  "full_graph_extremal_profile_implemented": false,
+  "candidate_graph_witness_implemented": true,
+  "candidate_arithmetic_profile_theorem_implemented": true,
+  "candidate_family_arithmetic_implemented": true,
+  "formal_statement_audit": "Human-readable inspection by the assistant only; not independent external review",
+  "source_static_scan": "No forbidden proof-placeholder, custom-axiom, native_decide, or unsafe tokens found outside comments/strings; not a semantic audit",
+  "actual_axiom_dependency_audit_performed": false,
+  "mathematical_audit": "No error found in this audit; not a formal certificate or independent referee endorsement",
+  "supplied_python_test_methods_passed": 18,
+  "fresh_matrix_certificates_passed": 7,
+  "coefficient_pairs_checked": 45,
+  "positive_coefficients": 44,
+  "negative_coefficients": 1,
+  "edge_type_relaxation": {
+    "patterns": 3003,
+    "integral_vectors": 49380,
+    "connected_support_vectors": 36641,
+    "positive_profiles": 1
+  },
+  "selected_lean": "v4.19.0",
+  "selected_mathlib_commit": "c44e0c8ee63ca166450922a373c7409c5d26b00b",
+  "dependency_resolution_status": "NOT_RUN; lockfile manually assembled from retrieved source and not validated",
+  "input_sha256": {
+    "input/original_verification.zip": "3fd9ab3f473a3f8636cc69bab7bfd76654124aca0426530ad703a44a899f2b0d",
+    "input/research_report.pdf": "d436ec3bdcbf54b2e021232ce182f74ee4b2320030f0e81a3275d37e35be2782"
+  },
+  "ready_for_independent_informal_review": true,
+  "ready_to_claim_full_lean_verification": false,
+  "bibliographic_priority": "Not established by this run"
+}

@@ -1,0 +1,3 @@
+✔ [6657/6659] Built Zagreb004.Witness
+✔ [6658/6659] Built Zagreb004
+Build completed successfully.

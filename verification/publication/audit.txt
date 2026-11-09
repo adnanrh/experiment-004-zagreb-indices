@@ -1,0 +1,117 @@
+'Zagreb004.degree_eq_mathlib' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zagreb004.Arithmetic.coefficient_barrier' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zagreb004.Arithmetic.patternII_impossible' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zagreb004.Arithmetic.patternI_unique' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zagreb004.Arithmetic.family_gap_identity' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zagreb004.Arithmetic.even_order_identity' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zagreb004.Arithmetic.odd_order_identity' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zagreb004.Arithmetic.even_gap_identity' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zagreb004.Arithmetic.odd_gap_identity' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zagreb004.Arithmetic.even_gap_positive' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zagreb004.Arithmetic.odd_gap_positive' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zagreb004.Arithmetic.all_orders_parameters' depends on axioms: [propext, Quot.sound]
+'Zagreb004.Profiles.gap_identity' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zagreb004.Profiles.profile_threshold' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zagreb004.Witness.connected' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zagreb004.Witness.degree_table' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zagreb004.Witness.exact_extrema' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zagreb004.Witness.exact_size' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zagreb004.Witness.exact_first' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zagreb004.Witness.exact_second' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zagreb004.Witness.exact_gap' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zagreb004.Witness.exact_edge_types' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zagreb004.Witness.strict_violation' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zagreb004.Witness.is_counterexample' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zagreb004.Witness.existence' depends on axioms: [propext, Classical.choice, Quot.sound]
+Zagreb004.Exists46Target : Prop
+Zagreb004.MinimalityTarget : Prop
+Zagreb004.AllOrdersTarget : Prop
+Zagreb004.ExtremalProfileTarget : Prop
+Zagreb004.FullTarget : Prop
+'Zagreb004.weighted_incidence' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zagreb004.edge_profile_sum' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zagreb004.profile_size' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zagreb004.profile_second' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zagreb004.profile_first' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zagreb004.profile_order' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zagreb004.degree_incidence' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zagreb004.incidence2' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zagreb004.incidence3' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zagreb004.incidence4' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zagreb004.incidence5' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zagreb004.graph_gap_identity' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zagreb004.positive_gap_profile' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zagreb004.edge_type_exists' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zagreb004.adj_type_positive' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zagreb004.connected_crossing' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zagreb004.profile_cuts' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zagreb004.extrema_positive' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zagreb004.violates_iff_gap_pos' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zagreb004.small_counterexample_profile' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zagreb004.minimality' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zagreb004.extremal_classification' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zagreb004.exists46' depends on axioms: [propext, Classical.choice, Quot.sound]
+Zagreb004.minimality : Zagreb004.MinimalityTarget
+Zagreb004.extremal_classification : Zagreb004.ExtremalProfileTarget
+'Zagreb004.Family.component_connected' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zagreb004.Family.component_neighbors_root' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zagreb004.Family.component_degree_root' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zagreb004.Family.component_neighbors' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zagreb004.Family.component_degree' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zagreb004.Family.bridge_connected' depends on axioms: [propext]
+'Zagreb004.Family.degree_sum' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zagreb004.Family.bridge_degree_left' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zagreb004.Family.bridge_degree_right' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zagreb004.Family.relabel_degree' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zagreb004.Family.relabel_connected' depends on axioms: [propext, Quot.sound]
+'Zagreb004.Family.joined_degree_left' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zagreb004.Family.joined_degree_right' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zagreb004.Family.joined_connected' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zagreb004.Family.assembled_degree' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zagreb004.Family.assembled_degree_count' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zagreb004.Family.assembled_bounds' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zagreb004.Family.assembled_extrema' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zagreb004.Family.assembled_edge_types' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zagreb004.Family.excluded_edge_type' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zagreb004.Family.even_family_positive' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zagreb004.Family.odd_family_positive' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zagreb004.Family.Core5.connected' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zagreb004.Family.Core5.adjusted_table' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zagreb004.Family.Core5.bounds' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zagreb004.Family.Core5.attachment_degree' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zagreb004.Family.Core5.has_five' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zagreb004.Family.Core5.edge_degrees' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zagreb004.Family.Core5.count_two' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zagreb004.Family.Core5.count_five' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zagreb004.Family.Core7.connected' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zagreb004.Family.Core7.adjusted_table' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zagreb004.Family.Core7.bounds' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zagreb004.Family.Core7.attachment_degree' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zagreb004.Family.Core7.has_five' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zagreb004.Family.Core7.edge_degrees' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zagreb004.Family.Core7.count_two' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zagreb004.Family.Core7.count_five' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zagreb004.even_order_counterexample' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zagreb004.odd_order_counterexample' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zagreb004.all_orders' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zagreb004.fullTarget' depends on axioms: [propext, Classical.choice, Quot.sound]
+Zagreb004.all_orders : Zagreb004.AllOrdersTarget
+Zagreb004.fullTarget : Zagreb004.FullTarget
+def Zagreb004.FullTarget : Prop :=
+Zagreb004.Exists46Target ∧ Zagreb004.MinimalityTarget ∧ Zagreb004.AllOrdersTarget ∧ Zagreb004.ExtremalProfileTarget
+def Zagreb004.MinimalityTarget : Prop :=
+∀ (n : ℕ) (G : SimpleGraph (Fin n)) (d : DecidableRel G.Adj),
+  n ≤ 45 → G.Connected → Zagreb004.degreeExtrema G → Zagreb004.zagrebInequality G
+def Zagreb004.ExtremalProfileTarget : Prop :=
+∀ (G : SimpleGraph (Fin 46)) (d : DecidableRel G.Adj),
+  Zagreb004.counterexample G → Zagreb004.graphProfile G = Zagreb004.Profiles.canonical
+def Zagreb004.AllOrdersTarget : Prop :=
+∀ (n : ℕ), 46 ≤ n → ∃ G d, Zagreb004.counterexample G
+def Zagreb004.counterexample : {n : ℕ} → (G : SimpleGraph (Fin n)) → [inst : DecidableRel G.Adj] → Prop :=
+fun {n} G [DecidableRel G.Adj] => G.Connected ∧ Zagreb004.degreeExtrema G ∧ Zagreb004.violates G
+def Zagreb004.degreeExtrema : {n : ℕ} → (G : SimpleGraph (Fin n)) → [inst : DecidableRel G.Adj] → Prop :=
+fun {n} G [DecidableRel G.Adj] =>
+  (∀ (v : Fin n), 2 ≤ Zagreb004.degree G v ∧ Zagreb004.degree G v ≤ 5) ∧
+    (∃ v, Zagreb004.degree G v = 2) ∧ ∃ v, Zagreb004.degree G v = 5
+theorem Zagreb004.fullTarget : Zagreb004.FullTarget :=
+⟨Zagreb004.exists46, ⟨Zagreb004.minimality, ⟨Zagreb004.all_orders, Zagreb004.extremal_classification⟩⟩⟩

@@ -1,0 +1,14 @@
+{
+  "status": "PASS_SYMBOLIC_CHECK_NOT_LEAN",
+  "arbitrary_profile_polynomial_identity": true,
+  "patternII_constant_scaled60": 120,
+  "canonical_profile_values": {
+    "order60": 2760,
+    "profileSize": 67,
+    "profileM1": 436,
+    "profileM2": 635,
+    "penaltyA60": 32,
+    "penaltyB60": 30,
+    "penaltyC60": 0
+  }
+}
