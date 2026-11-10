@@ -1,0 +1,45 @@
+{
+  "status": "PASS",
+  "pages": 10,
+  "zip_files": [
+    "main.tex",
+    "references.bib",
+    "main.bbl"
+  ],
+  "clean_zip_build": [
+    {
+      "command": "pdflatex -interaction=nonstopmode -halt-on-error main.tex",
+      "exit_code": 0
+    },
+    {
+      "command": "bibtex main",
+      "exit_code": 0
+    },
+    {
+      "command": "pdflatex -interaction=nonstopmode -halt-on-error main.tex",
+      "exit_code": 0
+    },
+    {
+      "command": "pdflatex -interaction=nonstopmode -halt-on-error main.tex",
+      "exit_code": 0
+    }
+  ],
+  "clean_zip_text_matches_delivered_pdf": true,
+  "bibliography_rebuild_matches": true,
+  "final_latex_warnings": [],
+  "unresolved_citations_or_references": false,
+  "all_fonts_embedded": true,
+  "author_orcid_and_disclosure_present": true,
+  "existing_tracked_files_modified": false,
+  "lean_and_pins_match_audited_commit": true,
+  "repository_HEAD": "1fd4a1b58f5e16dd24892a01f842cf480695abda",
+  "clean_zip_workspace": "/tmp/zagreb-arxiv-zip-jn269ii4",
+  "toolchain": "pdfTeX 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian)",
+  "files_sha256": {
+    "main.tex": "5ec2f0b0972211b0467d1d5b8a9b60666834efb8848514fc4c5e1b9d41dbe012",
+    "references.bib": "374d5005484cd1f868284f390c7af06f7de78ff548ab176eacbf4fdffcabdf22",
+    "main.bbl": "d0a7df83e9f69cc02eaa3c88b36814d232f14f9260cb721f398fbe532b55665e",
+    "main.pdf": "f20bbc8aa11a6cb64f693d0572da2dff894dd4867052749ccde1b90841e42e30",
+    "arxiv-source.zip": "cc628d670d2f66263d93fe554a9a395fe9262aa13c141bb0b0ed111e704a8e6f"
+  }
+}

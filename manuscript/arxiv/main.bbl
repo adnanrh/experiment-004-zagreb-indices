@@ -1,0 +1,57 @@
+\providecommand{\bysame}{\leavevmode\hbox to3em{\hrulefill}\thinspace}
+\providecommand{\MR}{\relax\ifhmode\unskip\space\fi MR }
+% \MRhref is called by the amsart/book/proc definition of \MR.
+\providecommand{\MRhref}[2]{%
+  \href{http://www.ams.org/mathscinet-getitem?mr=#1}{#2}
+}
+\providecommand{\href}[2]{#2}
+\begin{thebibliography}{1}
+
+\bibitem{ABDP}
+Vesna Andova, Sa\v{s}o Bogoev, Darko Dimitrov, Marcin Pilipczuk, and Riste
+  \v{S}krekovski, \emph{On the {Zagreb} index inequality of graphs with
+  prescribed vertex degrees}, Discrete Appl. Math. \textbf{159} (2011), no.~8,
+  852--858.
+
+\bibitem{ACS}
+Vesna Andova, Nathann Cohen, and Riste \v{S}krekovski, \emph{Graph classes
+  (dis)satisfying the {Zagreb} indices inequality}, MATCH Commun. Math. Comput.
+  Chem. \textbf{65} (2011), no.~3, 647--658.
+
+\bibitem{Ghalavand}
+Ali Ghalavand, \emph{On a conjecture about comparing the first and second
+  {Zagreb} indices of graphs}, MATCH Commun. Math. Comput. Chem. \textbf{96}
+  (2026), 441--452,
+  \href{https://doi.org/10.46793/match.96-2.04725}{doi:10.46793/match.96-2.04725}.
+
+\bibitem{HV}
+Pierre Hansen and Damir Vuki\v{c}evi\'{c}, \emph{Comparing the {Zagreb}
+  indices}, Croat. Chem. Acta \textbf{80} (2007), no.~2, 165--168.
+
+\bibitem{Formal}
+Adnan Husain, \emph{Experiment 004: {Zagreb} indices, {Lean} formalization},
+  2026, Audited mathematical commit
+  \texttt{68a494573fdbd2e629c620a263dafed5853ac26e}.\newline
+  \href{https://github.com/adnanrh/experiment-004-zagreb-indices/tree/68a494573fdbd2e629c620a263dafed5853ac26e}{Source
+  at the audited commit}.
+
+\bibitem{LMMS}
+Jeffrey~C. Lagarias, James~E. Mazo, Lawrence~A. Shepp, and Brendan~D. McKay,
+  \emph{An inequality for walks in a graph}, SIAM Rev. \textbf{26} (1984),
+  no.~4, 580--582, Solution to Problem 83-15.
+
+\bibitem{SC}
+Lingli Sun and Ting Chen, \emph{Comparing the {Zagreb} indices for graphs with
+  small difference between the maximum and minimum degrees}, Discrete Appl.
+  Math. \textbf{157} (2009), no.~7, 1650--1654.
+
+\bibitem{Taubig}
+Hanjo T\"aubig, \emph{Inequalities for the number of walks in subdivision
+  graphs}, MATCH Commun. Math. Comput. Chem. \textbf{76} (2016), 61--68.
+
+\bibitem{VGFAD}
+Damir Vuki\v{c}evi\'{c}, Ivan Gutman, Boris Furtula, Vesna Andova, and Darko
+  Dimitrov, \emph{Some observations on comparing {Zagreb} indices}, MATCH
+  Commun. Math. Comput. Chem. \textbf{66} (2011), no.~2, 627--645.
+
+\end{thebibliography}

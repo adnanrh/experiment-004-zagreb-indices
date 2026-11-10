@@ -1,0 +1,16 @@
+{
+  "status": "PASS",
+  "witness_matches_Lean_edge_list": true,
+  "witness_invariants": [
+    46,
+    67,
+    436,
+    635,
+    2
+  ],
+  "both_fixed_core_edge_lists_match_Lean": true,
+  "family_orders_checked": 259,
+  "all_scaled_penalty_coefficients_match_Lean": true,
+  "integrality_table": "PASS",
+  "scope": "Exact manuscript consistency checks, not a new formal proof or external peer review."
+}

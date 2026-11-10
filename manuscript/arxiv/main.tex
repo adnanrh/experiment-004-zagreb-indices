@@ -1,0 +1,446 @@
+\documentclass[11pt]{amsart}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb,amsthm,booktabs,array}
+\usepackage[hidelinks]{hyperref}
+\hypersetup{pdftitle={The Sharp Order Threshold for the Zagreb-Index Inequality with Minimum Degree Two and Maximum Degree Five}, pdfauthor={Adnan Husain}}
+\usepackage[margin=1.1in]{geometry}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\T}{\mathcal T}
+\newcommand{\F}{\mathcal F}
+\newcommand{\dd}{\delta}
+\newcommand{\DD}{\Delta}
+\title[Sharp order threshold for the Zagreb inequality]{The Sharp Order Threshold for the Zagreb-Index Inequality with Minimum Degree Two and Maximum Degree Five}
+\author{Adnan Husain}
+\address{Independent Researcher}
+\urladdr{https://orcid.org/0009-0000-4898-0333}
+\date{}
+\keywords{Zagreb indices, degree sequence, extremal graph theory, edge-degree profile, formal verification}
+\begin{document}
+\raggedbottom
+\begin{abstract}
+We determine the sharp order threshold for the normalized Zagreb inequality among finite connected simple graphs with minimum degree exactly two and maximum degree exactly five. Every such graph on at most 45 vertices satisfies $M_1/|V|\le M_2/|E|$, whereas a counterexample exists on 46 vertices. Thus the answer to Question I of Ghalavand is 45. Every 46-vertex counterexample has exactly 35 edges of degree type $(2,5)$, 31 of type $(3,3)$, and one of type $(2,3)$, with no other edge types. We also construct counterexamples at every integer order at least 46. The lower bound uses the established edge-degree expansion, a small-order coefficient bound, connectedness, and incidence integrality. Complete mathematical proofs are given, together with a Lean 4/Mathlib formalization of the combined theorem.
+\end{abstract}
+\maketitle
+
+\section{Introduction}
+For a finite simple graph $G$, the first and second Zagreb indices are
+\[
+ M_1(G)=\sum_{v\in V(G)}d(v)^2,
+ \qquad M_2(G)=\sum_{uv\in E(G)}d(u)d(v).
+\]
+Writing $n=|V(G)|$ and $m=|E(G)|$, the normalized Zagreb inequality is
+\begin{equation}\label{eq:zagreb}
+ \frac{M_1(G)}{n}\le\frac{M_2(G)}{m}.
+\end{equation}
+The inequality is false for general connected graphs. Hansen and Vuki\v{c}evi\'{c} \cite{HV} supplied counterexamples in its Zagreb-index formulation and proved validity when the maximum degree is at most four. Their connected 46-vertex example has maximum degree ten and 110 edges; it is distinct from the degree-restricted example below.
+
+The equivalent walk-count problem has an earlier history. If $w_j$ counts directed walks of length $j$, then $w_0=n$, $w_1=2m$, $w_2=M_1$, and $w_3=2M_2$. Consequently, \eqref{eq:zagreb} is equivalent to $w_1w_2\le w_0w_3$. Counterexamples to this inequality occur in the 1984 work of Lagarias, Mazo, Shepp, and McKay \cite{LMMS}; T\"aubig \cite{Taubig} explicitly explains the connection. Thus 2007 is not the date of the first disproof of the equivalent unrestricted assertion.
+
+Degree restrictions have been studied extensively. Sun and Chen \cite{SC} considered small differences between the maximum and minimum degrees. Andova, Cohen, and \v{S}krekovski \cite{ACS} gave connected counterexample families, including a 137-vertex example with extreme degrees two and five. Further degree-interval results and connected constructions appear in \cite{ABDP,VGFAD}. These works already supply counterexamples in the present degree class and general methods for producing infinitely many of them.
+
+Ghalavand \cite[p.~451, Question I]{Ghalavand} asks for the largest integer $N$ such that every connected graph with minimum degree two, maximum degree five, and order at most $N$ satisfies \eqref{eq:zagreb}. His exhibited family begins at order 218; that number is a feature of his construction, not a previous best-known upper bound for the minimum counterexample order.
+
+Here and below a \emph{qualifying graph} means a finite connected simple graph with $\dd(G)=2$ and $\DD(G)=5$. Both degree extrema are required to be attained. Our main results are as follows.
+
+\begin{theorem}[Sharp threshold]\label{thm:A}
+Every qualifying graph of order at most 45 satisfies \eqref{eq:zagreb}. There exists a qualifying graph of order 46 that strictly violates \eqref{eq:zagreb}. Hence the answer to Ghalavand's Question I is 45.
+\end{theorem}
+
+\begin{theorem}[Extremal profile]\label{thm:B}
+Every qualifying 46-vertex counterexample has
+\[
+ e_{25}=35,\qquad e_{33}=31,\qquad e_{23}=1,
+\]
+and all other edge-degree counts are zero. This is uniqueness of the edge-degree profile, not uniqueness up to graph isomorphism.
+\end{theorem}
+
+\begin{theorem}[All orders]\label{thm:C}
+For every integer $n\ge46$, there exists a qualifying graph of order $n$ with $M_1(G)/n>M_2(G)/m$.
+\end{theorem}
+
+The contribution is the exact finite-order boundary, its extremal profile, and existence at every order starting at that boundary. Neither the general edge-type method nor the existence of infinite families is claimed as new. The proof develops the established expansion from \cite{HV,ACS,ABDP} into a small-order classification. Sections~\ref{sec:identities} and~\ref{sec:lower} prove the lower bound and classification, Sections~\ref{sec:witness} and~\ref{sec:family} give actual graphs, and Section~\ref{sec:formal} describes the formal verification.
+
+\section{Preliminaries}\label{sec:prelim}
+All graphs considered are finite, undirected, and simple. Edges are unordered pairs of distinct vertices and are counted once. Let $d(v)$ denote the degree of $v$, and let $n_i$ be the number of vertices of degree $i$.
+
+\begin{definition}\label{def:profile}
+For $i\le j$, let $e_{ij}$ denote the number of edges whose endpoint degrees are $i$ and $j$. The collection of these counts is the \emph{edge-degree profile}. Define the integer Zagreb gap by
+\begin{equation}\label{eq:gapdef}
+ D(G)=mM_1(G)-nM_2(G).
+\end{equation}
+\end{definition}
+For a qualifying graph, $n,m>0$, so \eqref{eq:zagreb} holds if and only if $D(G)\le0$. In particular, a counterexample has $D(G)>0$. We work with this integer gap, with ordinary signed subtraction.
+
+Let
+\[
+ \T=\{(i,j):2\le i\le j\le5\}.
+\]
+For a type $t=(i,j)\in\T$ put
+\begin{equation}\label{eq:weights}
+ q_t=ij,\qquad r_t=\frac1i+\frac1j,\qquad s_t=i+j=q_tr_t,
+ \qquad e_t=e_{ij}.
+\end{equation}
+The counting identities below require only degrees between two and five; connectedness is used separately.
+
+\section{Edge-degree identities}\label{sec:identities}
+Throughout this section, $G$ is a finite simple graph whose vertex degrees lie in $\{2,3,4,5\}$. Connectedness is assumed only where explicitly stated.
+
+\begin{lemma}[Counting and incidence]\label{lem:counting}
+For every graph whose degrees lie in $\{2,3,4,5\}$,
+\begin{equation}\label{eq:counts}
+ n=\sum_{t\in\T}r_te_t,\quad
+ m=\sum_{t\in\T}e_t,\quad
+ M_1=\sum_{t\in\T}s_te_t,\quad
+ M_2=\sum_{t\in\T}q_te_t.
+\end{equation}
+Moreover,
+\begin{align}
+ 2n_2&=2e_{22}+e_{23}+e_{24}+e_{25},\label{eq:inc2}\\
+ 3n_3&=e_{23}+2e_{33}+e_{34}+e_{35},\label{eq:inc3}\\
+ 4n_4&=e_{24}+e_{34}+2e_{44}+e_{45},\label{eq:inc4}\\
+ 5n_5&=e_{25}+e_{35}+e_{45}+2e_{55}.\label{eq:inc5}
+\end{align}
+\end{lemma}
+\begin{proof}
+For any vertex weight $f$, summing over incidences gives
+\begin{equation}\label{eq:weighted}
+ \sum_{uv\in E(G)}(f(u)+f(v))=\sum_{v\in V(G)}d(v)f(v).
+\end{equation}
+Each vertex appears once for each of its incident edges. Taking $f(v)=1/d(v)$ gives the formula for $n$ in \eqref{eq:counts}; taking $f(v)=d(v)$ gives the formula for $M_1$. The formulas for $m$ and $M_2$ follow by partitioning the edge set into its ten degree types. Finally, take $f$ to be the indicator of the degree-$i$ vertices in \eqref{eq:weighted}. Edges with both endpoints in that class contribute twice, yielding \eqref{eq:inc2}--\eqref{eq:inc5}.
+\end{proof}
+
+\begin{lemma}[Quadratic gap identity]\label{lem:quadratic}
+For $t,u\in\T$ set
+\begin{equation}\label{eq:psi}
+ \Psi(t,u)=q_tr_u+q_ur_t-s_t-s_u=(q_t-q_u)(r_u-r_t).
+\end{equation}
+Then, for any fixed ordering of the ten types,
+\begin{equation}\label{eq:quadratic}
+ D(G)=-\sum_{t<u}\Psi(t,u)e_te_u.
+\end{equation}
+Exactly one of the 45 distinct-pair coefficients is negative:
+\[
+ \Psi((2,5),(3,3))=-\frac1{30}.
+\]
+All other distinct-pair coefficients are strictly positive.
+\end{lemma}
+\begin{proof}
+Expand $mM_1-nM_2$ using \eqref{eq:counts}. The coefficient of $e_t^2$ is $s_t-r_tq_t=0$. Combining the two ordered cross terms gives the negative of \eqref{eq:psi}, proving \eqref{eq:quadratic} without an additional factor of two. In order of increasing $q_t$, the weights are
+\begin{center}
+\begin{tabular}{c*{10}{c}}
+\toprule
+$t$&22&23&24&33&25&34&35&44&45&55\\
+$q_t$&4&6&8&9&10&12&15&16&20&25\\
+$r_t$&$1$&$\frac56$&$\frac34$&$\frac23$&$\frac7{10}$&$\frac7{12}$&$\frac8{15}$&$\frac12$&$\frac9{20}$&$\frac25$\\
+\bottomrule
+\end{tabular}
+\end{center}
+Here $ij$ abbreviates $(i,j)$. The reciprocal weights strictly decrease except for the adjacent pair $33,25$; these are the only pair in increasing rather than decreasing order. The factored expression in \eqref{eq:psi} proves the sign assertions, and substitution gives $-1/30$ for that pair.
+\end{proof}
+
+Write $a=e_{25}$, $b=e_{33}$, and call the other eight types \emph{defect types}; denote their set by $\F=\T\setminus\{(2,5),(3,3)\}$. Introduce scaled nonnegative penalties
+\begin{align}
+ A&=60\sum_{t\in\F}\Psi((2,5),t)e_t,&
+ B&=60\sum_{t\in\F}\Psi((3,3),t)e_t,\label{eq:AB}\\
+ C&=60\sum_{\substack{t<u\\t,u\in\F}}\Psi(t,u)e_te_u.&&\label{eq:C}
+\end{align}
+Thus
+\begin{equation}\label{eq:penalty}
+ 60D=2ab-Aa-Bb-C.
+\end{equation}
+The coefficients in $A$ and $B$ are
+\begin{equation}\label{eq:table}
+\begin{array}{c|rrrrrrrr}
+ t&22&23&24&34&35&44&45&55\\\hline
+ {[e_t]A}&108&32&6&14&50&72&150&270\\
+ {[e_t]B}&100&30&5&15&48&70&143&256
+\end{array}
+\end{equation}
+All coefficients in $C$ are nonnegative by Lemma~\ref{lem:quadratic}. These formulas hold for actual graph counts, not just prescribed numerical profiles.
+
+\begin{lemma}[Necessary cut restrictions]\label{lem:cuts}
+If $G$ is connected and $a,b>0$, then
+\begin{equation}\label{eq:cuts}
+ e_{23}+e_{34}+e_{35}>0,\qquad
+ e_{23}+e_{24}+e_{35}+e_{45}>0.
+\end{equation}
+\end{lemma}
+\begin{proof}
+A nonempty proper vertex subset of a connected graph has an edge to its complement: take a path from a vertex in the subset to one outside it and its first crossing edge. Since $a,b>0$, vertices of degrees two, three, and five exist. Apply this observation first to the set of degree-three vertices, and then to the set of vertices of degree two or five. The possible crossing types are exactly those displayed in \eqref{eq:cuts}.
+\end{proof}
+
+\section{The sharp lower bound}\label{sec:lower}
+We prove the stronger intermediate statement that a counterexample of order at most 46 must have the profile in Theorem~\ref{thm:B}.
+
+\begin{lemma}[Coefficient bound]\label{lem:barrier}
+If $G$ is a qualifying counterexample of order at most 46, then $a,b>0$, $a+b\le69$, and
+\begin{equation}\label{eq:barrier}
+ A<35\quad\hbox{or}\quad B<35.
+\end{equation}
+There are at most six defect edges.
+\end{lemma}
+\begin{proof}
+By \eqref{eq:penalty} and nonnegativity of the penalties, $D>0$ forces both $a$ and $b$ to be positive. Put $S=a+b$. The order identity gives
+\[
+ 46\ge n\ge\frac7{10}a+\frac23b\ge\frac23S,
+\]
+so $0<S\le69$. If $A,B\ge35$, then $2ab\le S^2/2$ implies
+\[
+ 60D\le2ab-35S\le\frac{S(S-70)}2<0,
+\]
+a contradiction. Finally, each defect edge contributes at least six to $A$ and at least five to $B$. Seven such edges would give $A\ge42$ and $B\ge35$, contradicting \eqref{eq:barrier}.
+\end{proof}
+
+\begin{lemma}[The two remaining patterns]\label{lem:patterns}
+Under the hypotheses of Lemma~\ref{lem:barrier}, the only possible defect patterns are
+\[
+ \mathrm{I}:\ e_{23}=1,
+ \qquad
+ \mathrm{II}:\ e_{24}=3,\ e_{34}=1,
+\]
+with all unlisted defect counts zero.
+\end{lemma}
+\begin{proof}
+An edge of type $22,35,44,45$, or $55$ alone contributes at least 35 to both $A$ and $B$, by \eqref{eq:table}. Hence all five types are absent. Only types $23,24,34$ remain. If there is a type-$23$ edge and any further defect edge, their contributions give $A\ge32+6=38$ and $B\ge30+5=35$, again impossible. Thus $e_{23}>0$ gives pattern I.
+
+Otherwise put $p=e_{24}$ and $q=e_{34}$. The two cut restrictions give $p,q\ge1$. Equation~\eqref{eq:inc4} gives $p+q=4n_4$, so $p+q\ge4$. Here $A=6p+14q$ and $B=5p+15q$. If $q\ge2$, either $p\ge2$, giving $A,B\ge40$, or $p=1$ and $q\ge3$, giving $A\ge48$ and $B\ge50$. Both violate \eqref{eq:barrier}. Thus $q=1$. Now $p\ge3$; if $p\ge4$, then $A\ge38$ and $B\ge35$. Therefore $p=3$, giving pattern II.
+\end{proof}
+
+\begin{lemma}[Exclusion of pattern II]\label{lem:II}
+Pattern II cannot occur in a counterexample of order at most 46.
+\end{lemma}
+\begin{proof}
+Substitute $e_{24}=3$, $e_{34}=1$ into the order and gap identities. Since $\Psi((2,4),(3,4))=2/3$, the defect--defect term is $C=120$, and
+\begin{equation}\label{eq:II}
+ 30n=21a+20b+85,\qquad 30D=ab-16a-15b-60.
+\end{equation}
+The inequality $D>0$ forces $a>15$ and $b>16$: if $a\le15$, then $ab\le15b$, and if $b\le16$, then $ab\le16a$, each contrary to \eqref{eq:II}. Furthermore,
+\[
+ (a-15)(b-16)>300.
+\]
+Set $X=21(a-15)>0$ and $Y=20(b-16)>0$. As $n\le46$, equation~\eqref{eq:II} gives
+\[
+ X+Y\le1380-85-315-320=660.
+\]
+But $XY>420\cdot300=126000$, whereas
+\[
+ XY\le\frac{(X+Y)^2}{4}\le108900.
+\]
+This contradiction excludes pattern II.
+\end{proof}
+
+\begin{proposition}[Classification through order 46]\label{prop:classification}
+Every qualifying counterexample with $n\le46$ has $n=46$ and profile
+\begin{equation}\label{eq:canonical}
+ (e_{22},e_{23},e_{24},e_{25},e_{33},e_{34},e_{35},e_{44},e_{45},e_{55})
+ =(0,1,0,35,31,0,0,0,0,0).
+\end{equation}
+\end{proposition}
+\begin{proof}
+Only pattern I remains. Its order and gap are
+\begin{equation}\label{eq:I}
+ 30n=21a+20b+25,\qquad 30D=ab-16a-15b.
+\end{equation}
+The incidence equations give
+\[
+ a=5n_5,\qquad a+1=2n_2,\qquad 2b+1=3n_3,
+\]
+hence $a\equiv5\pmod{10}$ and $b\equiv1\pmod3$. As in the preceding proof, positivity forces $a>15$ and $b>16$, so $b\ge19$. Using $n\le46$ in \eqref{eq:I}, we obtain
+\[
+ 21a\le1380-25-20\cdot19=975,
+\]
+whence $a\le46$. The only possibilities are $a=25,35,45$. Positivity of $D$ and the congruence for $b$ give the following exact bounds:
+\begin{center}
+\begin{tabular}{rrrr}
+\toprule
+$a$ & condition from $D>0$ & least admissible $b$ & least resulting $n$\\
+\midrule
+25 & $b>40$ &43&47\\
+35 & $b>28$ &31&46\\
+45 & $b>24$ &25&49\\
+\bottomrule
+\end{tabular}
+\end{center}
+The first and last cases are excluded. In the middle case the order bound gives $20b\le620$, so $b\le31$. Thus $a=35$, $b=31$, and $n=46$. Together with pattern I this proves \eqref{eq:canonical}.
+\end{proof}
+
+\begin{proof}[Proof of the lower bound and Theorem~\ref{thm:B}]
+Proposition~\ref{prop:classification} directly gives Theorem~\ref{thm:B}. It also rules out every qualifying counterexample on at most 45 vertices. Since $D\le0$ is equivalent to \eqref{eq:zagreb}, the asserted universal inequality follows.
+\end{proof}
+
+\section{The 46-vertex counterexample}\label{sec:witness}
+We give the labeled construction encoded in \texttt{Zagreb004.Witness}.
+Let $H$ be the graph on hubs $0,1,\ldots,6$ obtained from $K_7$ by deleting
+\[
+ \{0,1\},\quad\{0,2\},\quad\{3,4\},\quad\{5,6\}.
+\]
+It has 17 edges, hub 0 has degree four, and the other hubs have degree five. It is connected: every component of a graph of minimum degree four has at least five vertices, so two components cannot fit on seven vertices.
+Subdivide each edge once, using distinct new vertices, and add a vertex $u$ adjacent to hub 0. The resulting piece has 25 vertices and 35 edges. All seven hubs now have degree five, the 17 subdivision vertices have degree two, and $u$ has degree one.
+
+Separately take the prism $C_{10}\mathbin{\square}K_2$, consisting of two ten-cycles and ten matching rungs. Subdivide one cycle edge by a vertex $w$. This piece is connected, has 21 vertices and 31 edges, and all vertices except $w$ have degree three; $w$ has degree two. Join the two disjoint pieces by the edge $uw$.
+
+For precise reproduction of the Lean labeling, label the subdivision vertices of $H$ by $7,\ldots,23$ in lexicographic order of the remaining hub edges, and set $u=24$. The prism cycles are $25,26,\ldots,34,25$ and $35,36,\ldots,44,35$, with rungs $i(i+10)$ for $25\le i\le34$. Replace edge $25\,26$ by $25\,45$ and $45\,26$, set $w=45$, and add $24\,45$. These instructions specify every edge and reproduce the checked edge list.
+
+\begin{proposition}\label{prop:witness}
+The graph just constructed is a qualifying counterexample with
+\[
+ (n,m,M_1,M_2,D)=(46,67,436,635,2).
+\]
+\end{proposition}
+\begin{proof}
+The pieces are connected simple graphs on disjoint vertex sets; subdivision preserves these properties, and the added bridge makes their union connected without introducing a loop or repeated edge. After adding the bridge, $u$ has degree two and $w$ has degree three. Thus
+\[
+ (n_2,n_3,n_4,n_5)=(18,21,0,7).
+\]
+The first piece contributes 35 edges of type $(2,5)$, the second contributes 31 of type $(3,3)$, and the bridge is the single type-$(2,3)$ edge. Therefore $n=46$, $m=67$, and
+\begin{align*}
+ M_1&=18\cdot4+21\cdot9+7\cdot25=436,\\
+ M_2&=35\cdot10+31\cdot9+6=635,\\
+ D&=67\cdot436-46\cdot635=2>0.
+\end{align*}
+Both extreme degrees are attained. In particular,
+$436/46-635/67=1/1541>0$.
+\end{proof}
+This completes the proof of Theorem~\ref{thm:A}.
+
+\section{Counterexamples at every order}\label{sec:family}
+We now describe the two fixed cores and subdivided-prism construction used in the completed Lean family proof. The construction here subdivides a \emph{rung}, rather than the cycle edge used in Section~\ref{sec:witness}.
+
+\subsection{The fixed cores}
+Only $k=5$ and $k=7$ will be used. On hubs $h_0,\ldots,h_{k-1}$, with subscripts modulo $k$, introduce, for each $i$, two distinct vertices $x_i^0,x_i^1$ and join each to both $h_i$ and $h_{i+1}$. Introduce also a vertex $y_j$ adjacent to $h_{2j-1}$ and $h_{2j}$ for $1\le j\le(k-1)/2$. Finally introduce $u$ adjacent only to $h_0$. Call this core $H_k$.
+
+This direct description defines a simple graph: every edge joins a hub to a distinct named nonhub vertex. It is equivalently a doubled hub cycle with a matching on the nonzero hubs, each individual edge subdivided separately, and a pendant attachment vertex. The intermediate multigraph is only a description; the graph $H_k$ itself has no parallel edges.
+
+The two paths through $x_i^0,x_i^1$ connect successive hubs, so the core is connected. Hub $h_0$ has four neighbors of the form $x_i^\epsilon$ and the neighbor $u$. Each other hub has four neighbors of the form $x_i^\epsilon$ and one of the form $y_j$. Thus every hub has degree five, all $x$ and $y$ vertices have degree two, and $u$ has degree one. Consequently,
+\begin{equation}\label{eq:core}
+ |V(H_k)|=k+2k+\frac{k-1}{2}+1=\frac{7k+1}{2},
+ \qquad |E(H_k)|=4k+(k-1)+1=5k.
+\end{equation}
+These are exactly the two finite cores in \texttt{Cores.lean}. An explicit labeling is
+\[
+ h_i=i,\quad x_i^0=k+2i,\quad x_i^1=k+2i+1,
+ \quad y_j=3k+j-1,\quad u=\frac{7k-1}{2}.
+\]
+For $k=5$ this labels 18 vertices, and for $k=7$ it labels 25 vertices.
+
+\subsection{The subdivided prism and bridge}
+For an integer $\ell\ge3$, let the prism have vertices $(i,\epsilon)$ with $i\in\Z/\ell\Z$ and $\epsilon\in\{0,1\}$. In each layer join consecutive $i$'s, and join $(i,0)$ to $(i,1)$ by a rung. Replace the rung at $i=0$ with the two edges $(0,0)w$ and $w(0,1)$ through a new vertex $w$. Call the result $P_\ell^*$.
+
+Each old vertex still has two distinct cycle neighbors and one further neighbor, so has degree three. The vertex $w$ has degree two. The graph is simple and connected, with $2\ell+1$ vertices and $3\ell+1$ edges. This is the formal component with parameter $t=\ell-3$.
+
+Take disjoint copies of $H_k$ and $P_\ell^*$ and add just the edge $uw$; denote the resulting graph by $G_{k,\ell}$. It is simple and connected. The bridge changes the degree of $u$ to two and that of $w$ to three, without changing any other degree. Thus its extreme degrees are exactly two and five.
+
+\begin{lemma}[Family counts]\label{lem:family}
+For $k\in\{5,7\}$ and $\ell\ge3$, the graph $G_{k,\ell}$ has
+\begin{align}
+ n&=\frac{7k+4\ell+3}{2},& m&=5k+3\ell+2,\label{eq:family-nm}\\
+ n_2&=\frac{5k+1}{2},&n_3&=2\ell+1,& n_5&=k,\label{eq:family-degrees}
+\end{align}
+with $n_4=0$. Its only nonzero edge-degree counts are
+\begin{equation}\label{eq:family-profile}
+ e_{25}=5k,\qquad e_{33}=3\ell+1,\qquad e_{23}=1.
+\end{equation}
+Moreover,
+\begin{align}
+ M_1&=35k+18\ell+11,& M_2&=50k+27\ell+15,\label{eq:family-indices}\\
+ D(G_{k,\ell})&=\frac{k\ell-5k-3\ell-1}{2}.\label{eq:family-gap}
+\end{align}
+\end{lemma}
+\begin{proof}
+Adding the orders of the disjoint pieces and counting their edges and the bridge gives \eqref{eq:family-nm}. The $2k+(k-1)/2$ subdivision vertices of the core and $u$ are all the degree-two vertices; all $2\ell+1$ vertices of the prism piece have degree three after bridging; the $k$ hubs have degree five. This proves \eqref{eq:family-degrees}. Every core edge now joins degrees two and five, every prism edge joins degrees three and three, and the bridge joins degrees two and three. Hence \eqref{eq:family-profile} follows from the edge counts of the pieces. The degree and edge-type counts give
+\[
+ M_1=4\frac{5k+1}{2}+9(2\ell+1)+25k,
+ \qquad M_2=10(5k)+9(3\ell+1)+6,
+\]
+which simplify to \eqref{eq:family-indices}. Finally the profile is pattern I, so \eqref{eq:I} gives
+\[
+ D=\frac{(5k)(3\ell+1)-16(5k)-15(3\ell+1)}{30}
+  =\frac{k\ell-5k-3\ell-1}{2}.\qedhere
+\]
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{thm:C}]
+If $n\ge46$ is even, choose $k=7$ and $\ell=(n-26)/2\ge10$. If $n\ge46$ is odd, then $n\ge47$; choose $k=5$ and $\ell=(n-19)/2\ge14$. These are integer parameters, and in both cases \eqref{eq:family-nm} gives order exactly $n$. Equation~\eqref{eq:family-gap} gives, respectively,
+\[
+ D(G_{7,(n-26)/2})=n-44>0,
+ \qquad D(G_{5,(n-19)/2})=\frac{n-45}{2}>0.
+\]
+The construction already proves simplicity, connectedness, and both exact degree extrema. This covers every integer $n\ge46$.
+\end{proof}
+
+\section{Formal verification}\label{sec:formal}
+The combined graph-theoretic assertion has been formalized in Lean~4.19.0 with Mathlib revision
+\begin{center}\small\texttt{c44e0c8ee63ca166450922a373c7409c5d26b00b}.\end{center}
+The immutable mathematical source is the Experiment~004 repository \cite{Formal}, commit
+\begin{center}\small\texttt{68a494573fdbd2e629c620a263dafed5853ac26e}.\end{center}
+The final declaration is
+\begin{verbatim}
+Zagreb004.fullTarget : Zagreb004.FullTarget
+\end{verbatim}
+The proposition \texttt{FullTarget} combines order-46 existence, universal validity through order 45, actual graph counterexamples at every order at least 46, and the order-46 profile classification. It has no additional hypotheses.
+
+Graphs are represented as Mathlib simple graphs on \texttt{Fin n}, with decidable adjacency. Every finite graph admits such a labeling. Degree is the actual neighbor count, proved equal to Mathlib's degree. Edges are represented by their unique increasing endpoint pair, so each is counted once. The extrema predicate requires all degrees to lie between two and five and explicitly requires vertices attaining both endpoints. The normalized inequality is over the rationals and the gap is over the integers.
+
+The correspondence of the mathematical argument to the source is:
+\begin{center}
+\small
+\begin{tabular}{p{0.46\textwidth}p{0.42\textwidth}}
+\toprule
+Mathematical step & Source module(s)\\
+\midrule
+Counting, incidence, and connected cuts & \texttt{GraphCounting.lean}\\
+Quadratic identity and profile classification & \texttt{Profiles.lean}, \texttt{Arithmetic.lean}\\
+Minimality and extremal classification & \texttt{GraphTheorems.lean}\\
+The labeled 46-vertex witness & \texttt{Witness.lean}\\
+Fixed cores, prism, bridge, and all orders & \texttt{Cores.lean}, \texttt{Family.lean}, \texttt{Full.lean}\\
+\bottomrule
+\end{tabular}
+\end{center}
+The profile conditions used in the arithmetic proof are derived from actual graphs; they are not additional assumptions on the universal theorem. The existential family is realized by actual connected simple graphs and then transported to \texttt{Fin n} by a finite equivalence. The formalization uses the two cores $k=5,7$, rather than assuming a general odd-$k$ construction.
+
+\newpage
+\subsection{Reproduction and audit scope}
+With Git, Python~3, and elan available on Linux or WSL2, the checked revision can be reproduced by
+\begin{verbatim}
+git clone https://github.com/adnanrh/experiment-004-zagreb-indices.git
+cd experiment-004-zagreb-indices
+git checkout --detach 68a494573fdbd2e629c620a263dafed5853ac26e
+lake exe cache get
+python3 scripts/check_dependency_pins.py
+python3 scripts/audit_sources.py
+lake build
+lake env lean Audit.lean
+\end{verbatim}
+The cache command obtains the pinned dependencies and available compiled caches. The manifest records transitive pins. A fresh project compilation may require several GiB of memory.
+
+The build and \texttt{Audit.lean} both completed with exit status zero. An additional adversarial AI-assisted audit inspected the formal statements, reproduced both commands in an isolated checkout with all project modules freshly compiled, and inspected the transitive proof dependencies. Existing pinned dependency sources and compiled caches were reused; Lean, Mathlib, and the entire toolchain were not rebuilt from source. The final theorem's reported axiom dependencies were exactly
+\begin{verbatim}
+propext, Classical.choice, Quot.sound
+\end{verbatim}
+The public audit covered 90 theorems. The transitive inspection found no extra custom axioms, proof holes, unsafe or partial dependencies, or cycles among project theorems and definitions. Finite certificates use kernel-checked proofs rather than native-evaluation shortcuts. These checks complement, rather than replace, assessment of the match between the formal statements and the mathematical question.
+
+The audit also reran 18 original Python tests, verified seven graph certificates, checked the quadratic coefficients and a bounded profile relaxation with exact arithmetic, and reconstructed family graphs at 259 orders. These finite computations do not establish the unbounded theorem; that conclusion follows from the mathematical and formal proofs above. Optional SymPy and NetworkX checks were not rerun in that audit. Compact build and axiom logs are committed in the repository; some additional audit evidence is local-only. Earlier reports and checksum manifests are preserved historical snapshots and can describe superseded incomplete states.
+
+The additional audit was conducted by the same AI assistant involved in development. It was a fresh adversarial inspection and reproduction, not independent human mathematical peer review or institutional certification. Machine checking establishes correctness relative to the formal definitions and Lean's foundations, not bibliographic priority.
+
+\section{Discussion}\label{sec:discussion}
+The proof isolates the effect of connectedness at small order. The favorable interaction between types $(2,5)$ and $(3,3)$ must overcome the cost of connecting their degree classes. At order at most 46, the coefficient bound permits only two defect patterns; incidence integrality and the order bound leave just one profile. Thus the argument requires neither enumeration of all graphs nor a sufficiency assumption for numerical profiles.
+
+Theorem~\ref{thm:B} classifies an edge-degree profile, not the internal isomorphism types of its realizations. Ghalavand's Question II, concerning the number of counterexamples of a given order, is not answered here. Likewise, the existence of infinite families is older than the present result. The sharp starting order and the universal lower bound are the essential conclusions.
+
+The accompanying literature investigation found no earlier matching sharp-threshold theorem in the accessible material examined. Its conclusion is qualified: the full text of Sun--Chen \cite{SC} was not obtained, a comprehensive authenticated bibliographic-database survey was not completed, and inaccessible or differently formulated work may have been missed. These limitations preclude any claim of absolute bibliographic priority. The formal audit is separate from that literature assessment. External, independent mathematical review remains outstanding.
+
+\subsection*{Disclosure of generative-AI assistance}
+This work is an AI-assisted mathematical research experiment directed by Adnan Husain, an independent researcher without formal expertise in this specific mathematical field. OpenAI's ChatGPT and Codex provided substantial assistance in mathematical exploration, proof development, Lean formalization, debugging, computational verification, adversarial auditing, literature investigation, and manuscript preparation. The author is the sole listed author and retains responsibility for the manuscript, its claims, citations, and interpretation. Neither the use of AI nor successful machine checking is presented as a substitute for external human peer review.
+
+\bibliographystyle{amsplain}
+\bibliography{references}
+\end{document}
