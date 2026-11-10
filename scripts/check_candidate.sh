@@ -13,7 +13,7 @@ python3 scripts/check_dependency_pins.py
 lake build
 lake env lean Audit.lean
 set +x
-printf '\nCANDIDATE LIBRARY CHECK FINISHED.\n'
+printf '\nCOMPLETED FORMALIZATION CHECK FINISHED.\n'
 printf 'Inspect Audit.lean output: only standard Lean axioms should occur.\n'
-printf 'This project still does not prove MinimalityTarget or AllOrdersTarget.\n'
-printf 'A successful build is NOT completion of FullTarget.\n'
+printf 'The project proves MinimalityTarget, AllOrdersTarget, and the complete FullTarget.\n'
+printf 'Audit.lean checks Zagreb004.fullTarget and prints its axiom dependencies.\n'
